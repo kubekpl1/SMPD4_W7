@@ -1,0 +1,245 @@
+ Version: 2.0
+ 
+ #
+ # Alternatives Section
+ #
+ 
+ Alternatives: &alternatives
+ # Here, we list all the alternatives, together with their attributes. 
+ # We can use these attributes later in the file when defining 
+ # preferenceFunctions. The attributes can be quantitative or 
+ # qualitative.
+   Apple iPad Pro 10,5" Wi-Fi + Cellular 256GB (rozowe zloto):
+     System operacyjny iOS: 10
+     Wyswietlacz cale: 10,5
+     Procesor GHz: 2,30
+     Pojemnosc GB: 256
+     Pamiec_RAM GB: 4
+     Cena: 4399
+   Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 256GB (szary):
+     System operacyjny iOS: 10
+     Wyswietlacz cale: 12,9
+     Procesor GHz: 2,30
+     Pojemnosc GB: 256
+     Pamiec_RAM GB: 4
+     Cena: 5199
+   Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny):
+     System operacyjny iOS: 10
+     Wyswietlacz cale: 12,9
+     Procesor GHz: 2,3
+     Pojemnosc GB: 64
+     Pamiec_RAM GB: 4
+     Cena: 4 699
+   Apple iPad Pro 10,5" Wi-Fi + Cellular 512GB (rozowe zloto):
+     System operacyjny iOS: 10
+     Wyswietlacz cale: 10,5
+     Procesor GHz: 2,3
+     Pojemnosc GB: 512
+     Pamiec_RAM GB: 4
+     Cena: 5 399
+   Apple iPad Pro 10,5" Wi-Fi + Cellular 64GB (srebrny):
+     System operacyjny iOS: 10
+     Wyswietlacz cale: 10,5
+     Procesor GHz: 2,3
+     Pojemnosc GB: 64
+     Pamiec_RAM GB: 4
+     Cena: 3 649
+   Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (zloty):
+     System operacyjny iOS: 10
+     Wyswietlacz cale: 12,9
+     Procesor GHz: 2,3
+     Pojemnosc GB: 64
+     Pamiec_RAM GB: 4
+     Cena: 4 399
+   Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 512GB (zloty):
+     System operacyjny iOS: 10
+     Wyswietlacz cale: 12,9
+     Procesor GHz: 2,3
+     Pojemnosc GB: 512
+     Pamiec_RAM GB: 4
+     Cena: 6 199
+
+ 
+ #
+ # End of Alternatives Section
+ #
+ 
+ #
+ # Goal Section
+ #
+ 
+ 
+ Goal:
+ # The goal spans a tree of criteria and the alternatives
+   name: Buy Car
+   description: >
+     This is a classic single decision maker problem. It models
+     the situation facing by a family that wants to buy a new car.
+   author: unknown
+   preferences:
+     # preferences are typically defined pairwise
+     # 1 means: A is equal to B
+     # 9 means: A is highly preferrable to B
+     # 1/9 means: B is highly preferrable to A
+     pairwise:
+       - [Cena, Pamiec_RAM, 3]
+       - [Cena, Pojemosc, 7]
+       - [Cena, Procesor, 3]
+       - [Pamiec_RAM, Pojemosc, 9]
+       - [Pamiec_RAM, Procesor, 1]
+       - [Pojemosc, Procesor, 1/7]
+   children: 
+     Cena:
+       preferences:
+         pairwise:
+           - [Purchase Price, Fuel Cena, 2]
+           - [Purchase Price, Maintenance Cena, 5]
+           - [Purchase Price, Resale Value, 3]
+           - [Fuel Cena, Maintenance Cena, 2]
+           - [Fuel Cena, Resale Value, 2]
+           - [Maintenance Cena, Resale Value, 1/2]
+       children:
+         Purchase Price:
+           preferences: 
+             pairwise:
+               - [Apple iPad Pro 10,5" Wi-Fi + Cellular 256GB (rozowe zloto), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 256GB (szary), 9]
+               - [Apple iPad Pro 10,5" Wi-Fi + Cellular 256GB (rozowe zloto), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), 9]
+               - [Apple iPad Pro 10,5" Wi-Fi + Cellular 256GB (rozowe zloto), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), 1]
+               - [Apple iPad Pro 10,5" Wi-Fi + Cellular 256GB (rozowe zloto), Apple iPad Pro 10,5" Wi-Fi + Cellular 512GB , 1/2]
+               - [Apple iPad Pro 10,5" Wi-Fi + Cellular 256GB (rozowe zloto), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 512GB, 5]
+               - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 256GB (szary), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), 1]
+               - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 256GB (szary), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), 1/9]
+               - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 256GB (szary), Apple iPad Pro 10,5" Wi-Fi + Cellular 512GB , 1/9]
+               - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 256GB (szary), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 512GB, 1/7]
+               - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), 1/9]
+               - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), Apple iPad Pro 10,5" Wi-Fi + Cellular 512GB , 1/9]
+               - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 512GB, 1/7]
+               - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), Apple iPad Pro 10,5" Wi-Fi + Cellular 512GB , 1/2]
+               - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 512GB, 5]
+               - [Apple iPad Pro 10,5" Wi-Fi + Cellular 512GB , Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 512GB, 6]
+           children: *alternatives
+           # We don't need to retype the alternatives here. Instead
+           # we can simply make a reference to the alternatives anchor
+           # defined in the alternatives section of the file.
+         Fuel Cena:
+           # Alternatively to the pairwise preferences, you 
+           # can define a preference function. This function
+           # is in R syntax, and needs to have two arguments.
+           # The Calculate method will pass all combinations
+           # of alternatives to this function, and the function
+           # is expected to return the pairwise preference, i.e.
+           # a number between 1/9 and 9.
+           preferences: 
+             pairwiseFunction:
+               function(a1, a2) min(9, max(1/9, a2$mpg/a1$mpg))
+           children: *alternatives
+         Maintenance Cena: 
+           preferences:
+             pairwise:
+               - [Apple iPad Pro 10,5" Wi-Fi + Cellular 256GB (rozowe zloto), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 256GB (szary), 1.5]
+               - [Apple iPad Pro 10,5" Wi-Fi + Cellular 256GB (rozowe zloto), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), 4]
+               - [Apple iPad Pro 10,5" Wi-Fi + Cellular 256GB (rozowe zloto), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), 4]
+               - [Apple iPad Pro 10,5" Wi-Fi + Cellular 256GB (rozowe zloto), Apple iPad Pro 10,5" Wi-Fi + Cellular 512GB , 4]
+               - [Apple iPad Pro 10,5" Wi-Fi + Cellular 256GB (rozowe zloto), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 512GB, 5]
+               - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 256GB (szary), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), 4]
+               - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 256GB (szary), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), 4]
+               - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 256GB (szary), Apple iPad Pro 10,5" Wi-Fi + Cellular 512GB , 4]
+               - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 256GB (szary), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 512GB, 5]
+               - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), 1]
+               - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), Apple iPad Pro 10,5" Wi-Fi + Cellular 512GB , 1.2]
+               - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 512GB, 1]
+               - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), Apple iPad Pro 10,5" Wi-Fi + Cellular 512GB , 1]
+               - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 512GB, 3]
+               - [Apple iPad Pro 10,5" Wi-Fi + Cellular 512GB , Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 512GB, 2]
+           children: *alternatives
+         Resale Value:
+           preferences:
+             pairwiseFunction: >
+               GetResalePreference <- function(a1, a2) {
+                 if (a1$`residual value` < a2$`residual value`) return (1/GetResalePreference(a2, a1))
+                 ratio <- a1$`residual value` / a2$`residual value`
+                 if (ratio < 1.05) return (1)
+                 if (ratio < 1.1) return (2)
+                 if (ratio < 1.15) return (3)
+                 if (ratio < 1.2) return (4)
+                 if (ratio < 1.25) return (5)
+                 return (5)
+               }
+           children: *alternatives 
+     Pamiec_RAM: 
+       preferences:
+         pairwise:
+           - [Apple iPad Pro 10,5" Wi-Fi + Cellular 256GB (rozowe zloto), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 256GB (szary), 1]
+           - [Apple iPad Pro 10,5" Wi-Fi + Cellular 256GB (rozowe zloto), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), 5]
+           - [Apple iPad Pro 10,5" Wi-Fi + Cellular 256GB (rozowe zloto), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), 7]
+           - [Apple iPad Pro 10,5" Wi-Fi + Cellular 256GB (rozowe zloto), Apple iPad Pro 10,5" Wi-Fi + Cellular 512GB , 9]
+           - [Apple iPad Pro 10,5" Wi-Fi + Cellular 256GB (rozowe zloto), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 512GB, 1/3]
+           - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 256GB (szary), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), 5]
+           - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 256GB (szary), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), 7]
+           - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 256GB (szary), Apple iPad Pro 10,5" Wi-Fi + Cellular 512GB , 9]
+           - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 256GB (szary), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 512GB, 1/3]
+           - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), 2]
+           - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), Apple iPad Pro 10,5" Wi-Fi + Cellular 512GB , 9]
+           - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 512GB, 1/8]
+           - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), Apple iPad Pro 10,5" Wi-Fi + Cellular 512GB , 2]
+           - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 512GB, 1/8]
+           - [Apple iPad Pro 10,5" Wi-Fi + Cellular 512GB , Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 512GB, 1/9]
+       children: *alternatives
+     Pojemosc: 
+       preferences: 
+         pairwise:
+           - [Apple iPad Pro 10,5" Wi-Fi + Cellular 256GB (rozowe zloto), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 256GB (szary), 1]
+           - [Apple iPad Pro 10,5" Wi-Fi + Cellular 256GB (rozowe zloto), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), 7]
+           - [Apple iPad Pro 10,5" Wi-Fi + Cellular 256GB (rozowe zloto), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), 5]
+           - [Apple iPad Pro 10,5" Wi-Fi + Cellular 256GB (rozowe zloto), Apple iPad Pro 10,5" Wi-Fi + Cellular 512GB , 9]
+           - [Apple iPad Pro 10,5" Wi-Fi + Cellular 256GB (rozowe zloto), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 512GB, 6]
+           - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 256GB (szary), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), 7]
+           - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 256GB (szary), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), 5]
+           - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 256GB (szary), Apple iPad Pro 10,5" Wi-Fi + Cellular 512GB , 9]
+           - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 256GB (szary), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 512GB, 6]
+           - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), 1/6]
+           - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), Apple iPad Pro 10,5" Wi-Fi + Cellular 512GB , 3]
+           - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 512GB, 1/3]
+           - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), Apple iPad Pro 10,5" Wi-Fi + Cellular 512GB , 7]
+           - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 512GB, 5]
+           - [Apple iPad Pro 10,5" Wi-Fi + Cellular 512GB , Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 512GB, 1/5]
+       children: *alternatives
+     Procesor:
+       preferences:
+         pairwise:
+           - [Cargo Procesor, Passenger Procesor, 1/5]
+       children:
+         Cargo Procesor: 
+           preferences:
+             pairwiseFunction: >
+               CargoPreference <- function(a1, a2) {
+                 if (a1$cargo < a2$cargo) return (1/CargoPreference(a2, a1))
+                 ratio <- a1$cargo / a2$cargo
+                 if (ratio < 3) return (1)
+                 if (ratio < 8) return (2)
+                 return (3)
+               }
+           children: *alternatives
+         Passenger Procesor: 
+           preferences:
+             pairwise:
+               - [Apple iPad Pro 10,5" Wi-Fi + Cellular 256GB (rozowe zloto), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 256GB (szary), 1]
+               - [Apple iPad Pro 10,5" Wi-Fi + Cellular 256GB (rozowe zloto), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), 1/2]
+               - [Apple iPad Pro 10,5" Wi-Fi + Cellular 256GB (rozowe zloto), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), 1]
+               - [Apple iPad Pro 10,5" Wi-Fi + Cellular 256GB (rozowe zloto), Apple iPad Pro 10,5" Wi-Fi + Cellular 512GB , 3]
+               - [Apple iPad Pro 10,5" Wi-Fi + Cellular 256GB (rozowe zloto), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 512GB, 1/2]
+               - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 256GB (szary), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), 1/2]
+               - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 256GB (szary), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), 1]
+               - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 256GB (szary), Apple iPad Pro 10,5" Wi-Fi + Cellular 512GB , 3]
+               - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 256GB (szary), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 512GB, 1/2]
+               - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), 2]
+               - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), Apple iPad Pro 10,5" Wi-Fi + Cellular 512GB , 6]
+               - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 512GB, 1]
+               - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), Apple iPad Pro 10,5" Wi-Fi + Cellular 512GB , 3]
+               - [Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 64GB (srebrny), Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 512GB, 1/2]
+               - [Apple iPad Pro 10,5" Wi-Fi + Cellular 512GB , Apple iPad Pro 12,9" 2gen Wi-Fi + Cellular 512GB, 1/6]
+           children: *alternatives
+ 
+ #
+ # End of Goal Section
+ #
